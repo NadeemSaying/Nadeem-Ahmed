@@ -1,0 +1,117 @@
+<html>
+
+<head>
+<title>Calculator</title>
+</head>
+
+<script type=text/javascript>
+
+	var n1=0,op,n1=0,res=0;
+
+	function operate(bval,val)
+	{
+		document.f1.hid.value=val;
+		document.f1.hidb.value=bval;
+
+		document.f1.number.value="";
+	}
+
+	function display(bval,val)
+	{
+		x=val+bval;
+		
+		document.f1.number.value=x;
+	}
+
+	function clr(val)
+	{
+		y=val%10;
+		x=val-y;
+		x=x/10;
+
+		document.f1.number.value=x;
+	}
+
+	function result(no2,no1,operator)
+	{
+		var res;
+	
+		switch(operator)
+		{
+			case '+':
+				res=parseInt(no1)+parseInt(no2);
+				break;
+
+			case '-':
+				res=no1-no2;
+				break;
+
+			case '*':
+				res=no1*no2;
+				break;
+
+			case '/':
+				if(no2=='0')
+					{
+						document.f1.number.value="";
+						alert("Cannot Divide by Zero.");
+					}
+				else
+					res=no1/no2;
+				break;
+		
+		}		
+
+		document.f1.number.value=res;
+	}
+</script>
+
+<body>
+
+<form name=f1>
+
+<table align=center>
+
+<tr>
+	<th colspan=4><input type=text name="number" value="" style="text-align:right"></th>
+	<td><input type=button name="b=" value="=" onClick="result(number.value,hid.value,hidb.value)"></td>
+</tr>
+
+<tr align=center>
+	<td><input type=button name=b1 value=1 onClick="display(b1.value,number.value)"></td>
+	<td><input type=button name=b2 value=2 onClick="display(b2.value,number.value)"></td>
+	<td><input type=button name=b3 value=3 onClick="display(b3.value,number.value)"></td>
+	<td><input type=button name=bplus value=+ onClick="operate(bplus.value,number.value)"></td>
+</tr>
+
+<tr align=center>
+	<td><input type=button name=b4 value=4 onClick="display(b4.value,number.value)"></td>
+	<td><input type=button name=b5 value=5 onClick="display(b5.value,number.value)"></td>
+	<td><input type=button name=b6 value=6 onClick="display(b6.value,number.value)"></td>
+	<td><input type=button name=bminus value=- onClick="operate(bminus.value,number.value)"></td>
+</tr>
+
+<tr align=center>
+	<td><input type=button name=b7 value=7 onClick="display(b7.value,number.value)"></td>
+	<td><input type=button name=b8 value=8 onClick="display(b8.value,number.value)"></td>
+	<td><input type=button name=b9 value=9 onClick="display(b9.value,number.value)"></td>
+	<td><input type=button name=bmul value=* onClick="operate(bmul.value,number.value)"></td>
+</tr>
+
+<tr align=center>
+	<td><input type=button name="b" value="." onClick="display(b.value,number.value)"></td>
+	<td><input type=button name=b0 value=0 onClick="display(b0.value,number.value)"></td>
+	<td><input type=button name=bC value=C onClick="clr(number.value)"></td>
+	<td><input type=button name=bdiv value=/ onClick="operate(bdiv.value,number.value)"></td>
+</tr>
+
+</table>
+
+<input type=hidden name=hid>
+<input type=hidden name=hidb>
+
+</form>
+
+</body>
+
+</html>
